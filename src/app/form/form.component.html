@@ -1,0 +1,53 @@
+<div class="container">
+  <div>
+    <h1>Loan Form</h1>
+  </div>
+  <form class="form" [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+
+    <label>
+      Name:
+      <input type="text" name="name" formControlName="name" required >
+      <div>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.name.errors && f.name.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.name.errors && f.name.errors.minlength">Field must have at least 4 characters</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.name.errors && f.name.errors.maxlength">Field can have a maximum of 256 characters</mat-error>
+      </div>
+    </label>
+    <label>
+      CPF:
+      <input type="text" name="cpf" formControlName="cpf" mask="000.000.000-00" required>
+      <div>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.minlength">fieldMinlength</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.maxlength">fieldMaxlength</mat-error>
+      </div>
+    </label>
+    <label>
+      Age:
+      <input type="text" name="age" formControlName="age" mask="00" required >
+      <div>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.age.errors && f.age.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.age.errors && f.age.errors.minlength">fieldMinlength</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.age.errors && f.age.errors.maxlength">fieldMaxlength</mat-error>
+      </div>
+    </label>
+    <label>
+      UF:
+      <input type="text" name="uf" formControlName="uf" required >
+      <div>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.uf.errors && f.uf.errors.required">Required field</mat-error>
+      </div>
+      <br>
+    </label>
+    <label>
+      Salary:
+      <input type="text" name="salary" formControlName="salary" mask="separator.2" required >
+      <div>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.salary.errors && f.salary.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.salary.errors && f.salary.errors.minlength">fieldMinlength</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.salary.errors && f.salary.errors.maxlength">fieldMaxlength</mat-error>
+      </div>
+    </label>
+    <button type="submit">submit</button>
+  </form>
+</div>
