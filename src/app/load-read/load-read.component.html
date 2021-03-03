@@ -1,0 +1,21 @@
+<div class="back">
+  <a routerLink="/" alt="back">
+    <mat-icon class="icon">keyboard_backspace</mat-icon>
+  </a>
+</div>
+<div class="container">
+  <div>
+    <h1>Loan Result</h1>
+    <label>
+      <strong>Name:</strong>
+      <p>{{loan.name}}</p>
+    </label>
+    <label>
+      <strong> Modality / Tax: </strong>
+      <div  *ngFor="let m of loan.modality">
+        <p>{{m.type}} - {{m.tax}} % </p>
+      </div>
+    </label>
+  </div>
+  <button type="submit" routerLink="/">back</button>
+</div>

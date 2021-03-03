@@ -10,10 +10,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { LoadReadComponent } from './load-read/load-read.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    FormComponent,
+    LoadReadComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +29,10 @@ import { NgxMaskModule } from 'ngx-mask';
     ReactiveFormsModule,
     MatSelectModule,
     NgxMaskModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <h1>Loan Form</h1>
+    <h1>Loan Consult</h1>
   </div>
   <form class="form" [formGroup]="loanForm" (ngSubmit)="onSubmit()">
 
@@ -17,9 +17,8 @@
       CPF:
       <input type="text" name="cpf" formControlName="cpf" mask="000.000.000-00" required>
       <div>
-        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.required">Required field</mat-error>
-        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.minlength">fieldMinlength</mat-error>
-        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.maxlength">fieldMaxlength</mat-error>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.required">Required field</mat-error><br>
+        <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.cpf.errors && f.cpf.errors.cpfInvalido">enter a valid cpf</mat-error>
       </div>
     </label>
     <label>
@@ -33,7 +32,9 @@
     </label>
     <label>
       UF:
-      <input type="text" name="uf" formControlName="uf" required >
+      <select name="uf" formControlName="uf" required aria-placeholder="Select your UF">
+        <option *ngFor="let uf of UF">{{uf}}</option>
+      </select>
       <div>
         <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.uf.errors && f.uf.errors.required">Required field</mat-error>
       </div>
@@ -41,7 +42,7 @@
     </label>
     <label>
       Salary:
-      <input type="text" name="salary" formControlName="salary" mask="separator.2" required >
+      <input type="text" name="salary" formControlName="salary" mask="separator.2"  required >
       <div>
         <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.salary.errors && f.salary.errors.required">Required field</mat-error>
         <mat-error *ngIf="(loanForm.touched || loanForm.dirty) && f.salary.errors && f.salary.errors.minlength">fieldMinlength</mat-error>

@@ -1,7 +1,9 @@
+import { ValidationsGenerics } from './../validations/validatorsGenerics';
 import { LoanServiceService } from './../service/loan-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Loan } from '../model/loanReturn';
 
 @Component({
   selector: 'app-form',
@@ -10,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class FormComponent implements OnInit {
   mask: string;
+
+  loan:Loan;
 
   UF = [
     'AC',
@@ -46,12 +50,12 @@ export class FormComponent implements OnInit {
       '',
       [Validators.required, Validators.minLength(4), Validators.maxLength(256)],
     ],
-    cpf: ['', [Validators.required]],
+    cpf: ['', [Validators.required,ValidationsGenerics.ValidaCpf]],
     age: ['', [Validators.required, Validators.maxLength(2)]],
     uf: ['', [Validators.required]],
     salary: [
       '',
-      [Validators.required, Validators.minLength(4), Validators.maxLength(256)],
+      [Validators.required],
     ],
   });
 
@@ -70,10 +74,17 @@ export class FormComponent implements OnInit {
   onSubmit() {
     this.loanForm.markAllAsTouched();
     if (this.loanForm.invalid) return;
-    let Form = JSON.stringify(this.loanForm.value);
-    this.loanService.create(Form).subscribe((resp:any)=>{
-      console.log(resp.content);
-
+    this.loanService.create(this.loanForm.value).subscribe((resp:any)=>{
+      this.loan = resp;
+      this.setLoan();
+      this.router.navigate(['/consult']);
+    },error=>{
+      this.loanService.verMsg('Error or loan consult!!!',true);
     });
+
+  }
+
+  private setLoan() {
+    localStorage.setItem('loan', JSON.stringify(this.loan));
   }
 }
