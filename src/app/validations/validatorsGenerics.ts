@@ -9,19 +9,30 @@ export class ValidationsGenerics{
     let valido: boolean;
 
     const regex = new RegExp('[0-9]{11}');
-
+    const regex11 = new RegExp('([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}-[0-9]{2})|([0-9]{11})');
+    const regex000 = new RegExp("^(?:(?!000\\.?000\\.?000?00).)*$");
+		const regex111 = new RegExp("^(?:(?!111\\.?111\\.?111-?11).)*$");
+		const regex222 = new RegExp("^(?:(?!222\\.?222\\.?222-?22).)*$")
+		const regex333 = new RegExp("^(?:(?!333\\.?333\\.?333-?33).)*$");
+		const regex444 = new RegExp("^(?:(?!444\\.?444\\.?444-?44).)*$");
+		const regex555 = new RegExp("^(?:(?!555\\.?555\\.?555-?55).)*$");
+		const regex666 = new RegExp("^(?:(?!666\\.?666\\.?666-?66).)*$");
+		const regex777 = new RegExp("^(?:(?!777\\.?777\\.?777-?77).)*$");
+		const regex888 = new RegExp("^(?:(?!888\\.?888\\.?888-?88).)*$");
+		const regex999 = new RegExp("^(?:(?!999\\.?999\\.?999-?99).)*$");
     if (
-      cpf == '00000000000' ||
-      cpf == '11111111111' ||
-      cpf == '22222222222' ||
-      cpf == '33333333333' ||
-      cpf == '44444444444' ||
-      cpf == '55555555555' ||
-      cpf == '66666666666' ||
-      cpf == '77777777777' ||
-      cpf == '88888888888' ||
-      cpf == '99999999999' ||
-      !regex.test(cpf)
+      !regex.test(cpf) ||
+      !regex000.test(cpf) ||
+      !regex11.test(cpf) ||
+      !regex222.test(cpf) ||
+      !regex111.test(cpf) ||
+      !regex333.test(cpf) ||
+      !regex444.test(cpf) ||
+      !regex555.test(cpf) ||
+      !regex666.test(cpf) ||
+      !regex777.test(cpf) ||
+      !regex888.test(cpf) ||
+      !regex999.test(cpf)
     )
       valido = false;
     else {

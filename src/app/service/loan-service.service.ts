@@ -27,7 +27,5 @@ export class LoanServiceService {
   create(loan: any): Observable<any> {
     return this.http.post<any>(this.baseUrl, loan);
   }
-  read(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
-  }
+
 }
